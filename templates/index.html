@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indovina Chi? (7 Domande)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 40px auto; background-color: #f6f8fa; color: #24292e; }
+        h1 { color: #0366d6; border-bottom: 2px solid #e1e4e8; padding-bottom: 10px; }
+        form { background-color: #ffffff; padding: 25px; border-radius: 8px; border: 1px solid #d1d5da; }
+        .domanda { margin-bottom: 16px; }
+        .domanda label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        .domanda select { width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #d1d5da; font-size: 16px; background-color: #fafbfc; }
+        button { display: block; width: 100%; padding: 10px; margin-top: 15px; background-color: #2ea44f; color: white; border: 1px solid rgba(27,31,35,.15); border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        button:hover { background-color: #2c974b; }
+        #risultato { margin-top: 25px; padding: 20px; border-radius: 8px; background-color: #f1f8ff; border: 1px solid #c8e1ff; text-align: center; }
+        #errore { margin-top: 20px; padding: 15px; border-radius: 6px; background-color: #ffeef0; border: 1px solid #f97583; color: #cb2431; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Indovina Chi? (7 Domande)</h1>
+    <p>Rispondi alle domande e l'IA proverà a indovinare a chi stai pensando.</p>
+
+    <form method="POST">
+        
+        <div class="domanda">
+            <label for="genere">Genere?</label>
+            <select name="genere" id="genere">
+                <option value="0">Maschio</option>
+                <option value="1">Femmina</option>
+            </select>
+        </div>
+
+        <div class="domanda">
+            <label for="occhi">Colore occhi?</label>
+            <select name="occhi" id="occhi">
+                <option value="0">Scuri (Marrone, Nero)</option>
+                <option value="1">Chiari (Azzurro, Verde)</option>
+            </select>
+        </div>
+
+        <div class="domanda">
+            <label for="capelli">Colore capelli?</label>
+            <select name="capelli" id="capelli">
+                <option value="0">Neri</option>
+                <option value="1">Marroni</option>
+                <option value="2">Biondi</option>
+                <option value="3">Altro</option>
+            </select>
+        </div>
+
+        <div class="domanda">
+            <label for="sport">Che sport fai?</label>
+            <select name="sport" id="sport">
+                <option value="0">Nessuno</option>
+                <option value="1">Sport di Squadra (Calcio, Basket...)</option>
+                <option value="2">Sport Individuale (Scacchi...)</option>
+            </select>
+        </div>
+
+        <div class="domanda">
+            <label for="carattere">Caratteristica?</label>
+            <select name="carattere" id="carattere">
+                <option value="0">Timido / Introverso</option>
+                <option value="1">Estroverso / Solare / Sportivo</option>
+                <option value="2">Altro (es. Pigro)</option>
+            </select>
+        </div>
+
+        <div class="domanda">
+            <label for="orecchini">Porti gli orecchini?</label>
+            <select name="orecchini" id="orecchini">
+                <option value="0">No</option>
+                <option value="1">Sì</option>
+            </select>
+        </div>
+
+        <div class="domanda">
+            <label for="mano">Scrivi con la destra o la sinistra?</label>
+            <select name="mano" id="mano">
+                <option value="0">Destro</option>
+                <option value="1">Mancino</option>
+            </select>
+        </div>
+
+        <button type="submit">Indovina!</button>
+    </form>
+
+    {% if error %}
+        <div id="errore"> <strong>{{ error }}</strong> </div>
+    {% endif %}
+    {% if prediction %}
+        <div id="risultato">
+            <h2>Secondo me la persona che stai descrivendo è: <span style="color: #0366d6;">{{ prediction }}</span></h2>
+        </div>
+    {% endif %}
+
+</body>
+</html>
